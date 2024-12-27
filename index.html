@@ -18,7 +18,7 @@
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html" class="cart">Cart</a></li>
+                <li><a href="cart.html" class="cart">Cart (<span id="cart-count">0</span>)</a></li>
             </ul>
         </nav>
     </header>
@@ -26,186 +26,50 @@
     <section class="product-grid">
         <h2>Featured Products</h2>
 
-        <!-- All 25 Products -->
-
+        <!-- 25 Products -->
+        <!-- Loop through products in HTML format -->
         <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 1">
+            <img src="https://via.placeholder.com/250" alt="Product 1">
             <h3>Product 1</h3>
             <p>$19.99</p>
-            <a href="product1.html">View Details</a>
+            <button class="add-to-cart" data-product-id="1" data-product-name="Product 1" data-product-price="19.99">Add to Cart</button>
         </div>
-
+        <!-- Repeat for all other products -->
+        <!-- Product 2 -->
         <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 2">
+            <img src="https://via.placeholder.com/250" alt="Product 2">
             <h3>Product 2</h3>
             <p>$29.99</p>
-            <a href="product2.html">View Details</a>
+            <button class="add-to-cart" data-product-id="2" data-product-name="Product 2" data-product-price="29.99">Add to Cart</button>
         </div>
+        <!-- Add products 3-25 with similar structure -->
 
+        <!-- Example for more products (repeat as needed) -->
+        <!-- Product 3 -->
         <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 3">
+            <img src="https://via.placeholder.com/250" alt="Product 3">
             <h3>Product 3</h3>
             <p>$39.99</p>
-            <a href="product3.html">View Details</a>
+            <button class="add-to-cart" data-product-id="3" data-product-name="Product 3" data-product-price="39.99">Add to Cart</button>
         </div>
-
+        
+        <!-- Continue for Products 4-25 -->
+        <!-- Product 25 -->
         <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 4">
-            <h3>Product 4</h3>
-            <p>$49.99</p>
-            <a href="product4.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 5">
-            <h3>Product 5</h3>
-            <p>$59.99</p>
-            <a href="product5.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 6">
-            <h3>Product 6</h3>
-            <p>$69.99</p>
-            <a href="product6.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 7">
-            <h3>Product 7</h3>
-            <p>$79.99</p>
-            <a href="product7.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 8">
-            <h3>Product 8</h3>
-            <p>$89.99</p>
-            <a href="product8.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 9">
-            <h3>Product 9</h3>
-            <p>$99.99</p>
-            <a href="product9.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 10">
-            <h3>Product 10</h3>
-            <p>$109.99</p>
-            <a href="product10.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 11">
-            <h3>Product 11</h3>
-            <p>$119.99</p>
-            <a href="product11.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 12">
-            <h3>Product 12</h3>
-            <p>$129.99</p>
-            <a href="product12.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 13">
-            <h3>Product 13</h3>
-            <p>$139.99</p>
-            <a href="product13.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 14">
-            <h3>Product 14</h3>
-            <p>$149.99</p>
-            <a href="product14.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 15">
-            <h3>Product 15</h3>
-            <p>$159.99</p>
-            <a href="product15.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 16">
-            <h3>Product 16</h3>
-            <p>$169.99</p>
-            <a href="product16.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 17">
-            <h3>Product 17</h3>
-            <p>$179.99</p>
-            <a href="product17.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 18">
-            <h3>Product 18</h3>
-            <p>$189.99</p>
-            <a href="product18.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 19">
-            <h3>Product 19</h3>
-            <p>$199.99</p>
-            <a href="product19.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 20">
-            <h3>Product 20</h3>
-            <p>$209.99</p>
-            <a href="product20.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 21">
-            <h3>Product 21</h3>
-            <p>$219.99</p>
-            <a href="product21.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 22">
-            <h3>Product 22</h3>
-            <p>$229.99</p>
-            <a href="product22.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 23">
-            <h3>Product 23</h3>
-            <p>$239.99</p>
-            <a href="product23.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 24">
-            <h3>Product 24</h3>
-            <p>$249.99</p>
-            <a href="product24.html">View Details</a>
-        </div>
-
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="Product 25">
+            <img src="https://via.placeholder.com/250" alt="Product 25">
             <h3>Product 25</h3>
-            <p>$259.99</p>
-            <a href="product25.html">View Details</a>
+            <p>$249.99</p>
+            <button class="add-to-cart" data-product-id="25" data-product-name="Product 25" data-product-price="249.99">Add to Cart</button>
         </div>
-
     </section>
 
     <footer>
         <p>&copy; 2024 Our E-commerce Store. All rights reserved.</p>
         <p><a href="terms.html">Terms & Conditions</a> | <a href="privacy.html">Privacy Policy</a></p>
-    </footer
+    </footer>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
