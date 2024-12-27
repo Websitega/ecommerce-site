@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - E-commerce Store</title>
+    <title>Contact - E-commerce Store</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+
+    <!-- Common Header -->
     <header>
-        <h1>Contact Us</h1>
+        <h1>Our E-commerce Store</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html" class="cart">Cart (<span id="cart-count">0</span>)</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Contact Form Section -->
     <section>
-        <h2>Get in Touch</h2>
-        <p>Feel free to reach out to us through the following form:</p>
-        <form action="#">
+        <h2>Contact Us</h2>
+        <form>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -36,8 +41,13 @@
         </form>
     </section>
 
+    <!-- Common Footer -->
     <footer>
         <p>&copy; 2024 Our E-commerce Store. All rights reserved.</p>
+        <p><a href="terms.html">Terms & Conditions</a> | <a href="privacy.html">Privacy Policy</a></p>
     </footer>
+
+    <script src="main.js"></script>
 </body>
+
 </html>
