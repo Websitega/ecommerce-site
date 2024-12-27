@@ -30,7 +30,23 @@ function addToCart(productId, productName, productPrice) {
     updateCartCount();
 }
 
-// Function to load the cart on cart.html page
+// Event listener for the "Add to Cart" buttons on product pages
+document.querySelectorAll(".add-to-cart").forEach(button => {
+    button.addEventListener("click", () => {
+        let productId = button.getAttribute("data-product-id");
+        let productName = button.getAttribute("data-product-name");
+        let productPrice = button.getAttribute("data-product-price");
+
+        addToCart(productId, productName, productPrice);
+    });
+});
+
+// Load cart when the cart page is opened
+if (window.location.pathname.includes("cart.html")) {
+    loadCart();
+}
+
+// Function to load cart content on cart.html page
 function loadCart() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let cartItemsDiv = document.getElementById("cart-items");
@@ -55,20 +71,4 @@ function loadCart() {
 
     // Update total price
     document.getElementById("cart-total").textContent = cartTotal.toFixed(2);
-}
-
-// Event listener for the "Add to Cart" buttons on product pages
-document.querySelectorAll(".add-to-cart").forEach(button => {
-    button.addEventListener("click", () => {
-        let productId = button.getAttribute("data-product-id");
-        let productName = button.getAttribute("data-product-name");
-        let productPrice = button.getAttribute("data-product-price");
-
-        addToCart(productId, productName, productPrice);
-    });
-});
-
-// Load cart when the cart page is opened
-if (window.location.pathname.includes("cart.html")) {
-    loadCart();
 }
