@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop - E-commerce Store</title>
+    <title>Home - E-commerce Store</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <header>
-        <h1>Shop Our Products</h1>
+        <div class="logo">
+            <h1>Our E-commerce Store</h1>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -22,10 +24,14 @@
         </nav>
     </header>
 
-    <section>
-        <h2>Browse Our Products</h2>
-        <p>Choose from a wide selection of products.</p>
+    <section id="hero">
+        <h2>Welcome to Our Online Store!</h2>
+        <p>Find the best deals on the latest products. Shop now and enjoy amazing offers!</p>
+        <a href="shop.html" class="btn">Shop Now</a>
+    </section>
 
+    <section id="featured-products">
+        <h2>Featured Products</h2>
         <div class="product-list">
             <!-- Product 1 -->
             <div class="product">
@@ -226,7 +232,6 @@
                 <a href="product25.html" class="view-details">View Details</a>
                 <button class="add-to-cart" data-product-id="25" data-product-name="Product 25" data-product-price="259.99">Add to Cart</button>
             </div>
-
         </div>
     </section>
 
@@ -235,6 +240,7 @@
     </footer>
 
     <script src="main.js"></script>
+
 </body>
 
 </html>
