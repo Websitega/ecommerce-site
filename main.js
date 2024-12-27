@@ -30,16 +30,15 @@ function addToCart(productId, productName, productPrice) {
     updateCartCount();
 }
 
-// Function to load the cart items on the cart page
+// Function to load the cart on cart.html page
 function loadCart() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let cartItemsDiv = document.getElementById("cart-items");
     let cartTotal = 0;
 
-    // Clear the previous cart items
+    // Clear previous cart items
     cartItemsDiv.innerHTML = "";
 
-    // Loop through the cart and display each item
     cart.forEach(item => {
         let itemDiv = document.createElement("div");
         itemDiv.classList.add("cart-item");
@@ -50,9 +49,7 @@ function loadCart() {
             <p>Quantity: ${item.quantity}</p>
             <p>Total: $${(item.price * item.quantity).toFixed(2)}</p>
         `;
-
         cartItemsDiv.appendChild(itemDiv);
-
         cartTotal += item.price * item.quantity;
     });
 
@@ -71,7 +68,7 @@ document.querySelectorAll(".add-to-cart").forEach(button => {
     });
 });
 
-// Load the cart when the cart page is opened
+// Load cart when the cart page is opened
 if (window.location.pathname.includes("cart.html")) {
     loadCart();
 }
