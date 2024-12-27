@@ -1,74 +1,40 @@
-// Function to update cart count in the navigation
-function updateCartCount() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let cartCount = cart.length;
-    document.getElementById("cart-count").textContent = cartCount;
-}
-
-// Function to add a product to the cart
-function addToCart(productId, productName, productPrice) {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    // Check if product is already in cart
-    let productIndex = cart.findIndex(item => item.id === productId);
-
-    if (productIndex !== -1) {
-        // If the product is already in the cart, increase the quantity
-        cart[productIndex].quantity += 1;
-    } else {
-        // If it's a new product, add it to the cart
-        cart.push({
-            id: productId,
-            name: productName,
-            price: parseFloat(productPrice),
-            quantity: 1
-        });
+document.addEventListener('DOMContentLoaded', function () {
+    // Function to update the cart count
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        document.getElementById('cart-count').textContent = cart.length;
     }
 
-    // Save the updated cart back to localStorage
-    localStorage.setItem("cart", JSON.stringify(cart));
+    // Add to Cart functionality
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const productId = this.dataset.productId;
+            const productName = this.dataset.productName;
+            const productPrice = this.dataset.productPrice;
+            
+            // Create product object
+            const product = {
+                id: productId,
+                name: productName,
+                price: productPrice
+            };
+
+            // Get the cart from localStorage (or initialize it if it's empty)
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Add the product to the cart array
+            cart.push(product);
+
+            // Save the updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Update cart count
+            updateCartCount();
+        });
+    });
+
+    // Update cart count on page load
     updateCartCount();
-}
-
-// Event listener for the "Add to Cart" buttons on product pages
-document.querySelectorAll(".add-to-cart").forEach(button => {
-    button.addEventListener("click", () => {
-        let productId = button.getAttribute("data-product-id");
-        let productName = button.getAttribute("data-product-name");
-        let productPrice = button.getAttribute("data-product-price");
-
-        addToCart(productId, productName, productPrice);
-    });
 });
-
-// Load cart when the cart page is opened
-if (window.location.pathname.includes("cart.html")) {
-    loadCart();
-}
-
-// Function to load cart content on cart.html page
-function loadCart() {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let cartItemsDiv = document.getElementById("cart-items");
-    let cartTotal = 0;
-
-    // Clear previous cart items
-    cartItemsDiv.innerHTML = "";
-
-    cart.forEach(item => {
-        let itemDiv = document.createElement("div");
-        itemDiv.classList.add("cart-item");
-
-        itemDiv.innerHTML = `
-            <p>${item.name}</p>
-            <p>Price: $${item.price}</p>
-            <p>Quantity: ${item.quantity}</p>
-            <p>Total: $${(item.price * item.quantity).toFixed(2)}</p>
-        `;
-        cartItemsDiv.appendChild(itemDiv);
-        cartTotal += item.price * item.quantity;
-    });
-
-    // Update total price
-    document.getElementById("cart-total").textContent = cartTotal.toFixed(2);
-}
