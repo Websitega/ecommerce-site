@@ -3,40 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Cart</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Shopping Cart - E-commerce Store</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
+        <h1>Your Shopping Cart</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html">Cart</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <h1>Your Shopping Cart</h1>
-        <div class="cart-items">
-            <div class="cart-item">
-                <img src="images/product1.jpg" alt="Product 1">
-                <p>Product 1</p>
-                <p>$19.99</p>
-                <button class="btn">Remove</button>
-            </div>
-            <!-- Repeat for other cart items -->
-        </div>
-        <button class="btn">Proceed to Checkout</button>
-    </main>
+    <section>
+        <h2>Items in Your Cart</h2>
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>Product 1</td>
+                <td>$19.99</td>
+                <td>1</td>
+                <td>$19.99</td>
+            </tr>
+            <!-- Add other cart items here -->
+        </table>
+
+        <h3>Total: $19.99</h3>
+        <button>Proceed to Checkout</button>
+    </section>
 
     <footer>
-        <p>&copy; 2024 My E-Commerce Site</p>
+        <p>&copy; 2024 Our E-commerce Store. All rights reserved.</p>
     </footer>
-
-    <script src="js/main.js"></script>
 </body>
 </html>
