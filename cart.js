@@ -1,58 +1,50 @@
-// Example cart data (replace with dynamic cart data)
-const cart = [
-    {
-        id: 1,
-        name: 'Product 1',
-        price: 20.00,
-        image: 'example-product.jpg'
-    },
-    {
-        id: 2,
-        name: 'Product 2',
-        price: 15.00,
-        image: 'example-product2.jpg'
-    }
-];
-
-// Function to update the cart total
-function updateCartTotal() {
-    const total = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
-    document.getElementById('cart-total').textContent = `Total: $${total}`;
-}
-
 // Function to render cart items
 function renderCartItems() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartItemsContainer = document.querySelector('.cart-items');
     cartItemsContainer.innerHTML = ''; // Clear existing items
+
+    if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+        return;
+    }
 
     cart.forEach(item => {
         const cartItemElement = document.createElement('div');
         cartItemElement.classList.add('cart-item');
         cartItemElement.innerHTML = `
             <div class="cart-item-details">
-                <img src="${item.image}" alt="Product Image">
+                <img src="${item.image}" alt="${item.name}">
                 <div>
                     <h3>${item.name}</h3>
-                    <p>$${item.price.toFixed(2)}</p>
+                    <p>Price: $${item.price}</p>
+                    <p>Quantity: <span class="quantity">${item.quantity}</span></p>
                 </div>
             </div>
             <button class="remove-item" data-id="${item.id}">Remove</button>
         `;
         cartItemsContainer.appendChild(cartItemElement);
     });
+
+    updateCartTotal();
+}
+
+// Function to update the total price
+function updateCartTotal() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2);
+    document.getElementById('cart-total').textContent = `Total: $${total}`;
 }
 
 // Function to remove an item from the cart
 function removeCartItem(id) {
-    const itemIndex = cart.findIndex(item => item.id === id);
-    if (itemIndex !== -1) {
-        cart.splice(itemIndex, 1); // Remove the item from the cart array
-        renderCartItems();
-        updateCartTotal();
-    }
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart = cart.filter(item => item.id !== id); // Remove the item with the matching ID
+    localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart to localStorage
+    renderCartItems(); // Re-render the cart
 }
 
-// Event listener for the "Remove" buttons
+// Event listener for "Remove" buttons
 document.querySelector('.cart-items').addEventListener('click', (e) => {
     if (e.target && e.target.classList.contains('remove-item')) {
         const itemId = parseInt(e.target.getAttribute('data-id'));
@@ -60,12 +52,11 @@ document.querySelector('.cart-items').addEventListener('click', (e) => {
     }
 });
 
-// Event listener for the checkout button
+// Event listener for checkout
 document.getElementById('checkout-button').addEventListener('click', () => {
     alert('Proceeding to checkout!');
-    // You can redirect to the checkout page or process the cart data here
+    // Add checkout functionality here
 });
 
-// Initial rendering of the cart
+// Initial rendering of cart items
 renderCartItems();
-updateCartTotal();
