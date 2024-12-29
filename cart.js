@@ -22,14 +22,14 @@ function renderCart() {
         // Set the innerHTML for the cart item element
         cartItemElement.innerHTML = `
             <div class="cart-item-details">
-                <img src="path-to-image.jpg" alt="${item.name}" class="cart-item-img">
+                <img src="${item.image}" alt="${item.name}" class="cart-item-img"> <!-- Image of the product -->
                 <div>
                     <h4>${item.name}</h4>
                     <p>Price: $${item.price}</p>
                     <p>Quantity: ${item.quantity}</p>
                 </div>
             </div>
-            <button class="remove-item" data-id="${item.id}">Remove</button>
+            <button class="remove-item" data-id="${item.id}">Remove</button> <!-- Remove button -->
         `;
 
         // Append the cart item to the cart container
@@ -44,7 +44,11 @@ function renderCart() {
 function renderCartTotal() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const totalElement = document.querySelector('#cart-total');
+    
+    // Calculate the total price of all items in the cart
     let total = cart.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0);
+
+    // Display the total price
     totalElement.textContent = `Total: $${total.toFixed(2)}`;
 }
 
@@ -63,11 +67,11 @@ function removeItemFromCart(productId) {
     renderCart();
 }
 
-// Add event listener for remove buttons
+// Add event listener for remove buttons (for when a user clicks "Remove")
 document.querySelector('.cart-items').addEventListener('click', (e) => {
     if (e.target.classList.contains('remove-item')) {
-        const productId = e.target.dataset.id;
-        removeItemFromCart(productId);
+        const productId = e.target.dataset.id; // Get product ID from the button's data-id attribute
+        removeItemFromCart(productId); // Call the remove function
     }
 });
 
