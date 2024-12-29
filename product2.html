@@ -1,37 +1,38 @@
+<!-- Product 2 -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product 2 - E-commerce Store</title>
+    <title>Product 2 - Details</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
     <header>
-        <h1>Our E-commerce Store</h1>
+        <h1>Product 2 - Details</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html" class="cart">Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="cart.html">Cart</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="product-detail">
-        <div class="product-image">
-            <img src="https://via.placeholder.com/500" alt="Product 2">
-        </div>
+    <section class="product-details">
         <div class="product-info">
-            <h2>Product 2</h2>
-            <p class="price">$29.99</p>
-            <p class="description">This is a detailed description of Product 2. It's an excellent product that comes with amazing features for your convenience!</p>
-            <button>Add to Cart</button>
+            <img src="https://via.placeholder.com/250?text=Product+2" alt="Product 2 Image">
+            <div class="product-description">
+                <h3>Product 2</h3>
+                <p>This is a detailed description of Product 2. It is a great choice for those looking for quality and style at a great price.</p>
+                <p class="price">$29.99</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
         </div>
     </section>
 
@@ -40,7 +41,32 @@
         <p><a href="terms.html">Terms & Conditions</a> | <a href="privacy.html">Privacy Policy</a></p>
     </footer>
 
-    <script src="main.js"></script>
+    <script>
+        const product2 = {
+            id: 2,
+            name: 'Product 2',
+            price: 29.99,
+            image: 'https://via.placeholder.com/250?text=Product+2',
+        };
+
+        function addToCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProductIndex = cart.findIndex(item => item.id === product2.id);
+
+            if (existingProductIndex !== -1) {
+                cart[existingProductIndex].quantity += 1;
+            } else {
+                product2.quantity = 1;
+                cart.push(product2);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product2.name} has been added to your cart.`);
+        }
+
+        document.querySelector('.add-to-cart-btn').addEventListener('click', addToCart);
+    </script>
+
 </body>
 
 </html>
