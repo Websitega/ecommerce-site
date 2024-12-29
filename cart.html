@@ -1,55 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart Page</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+
+    <!-- Header Section -->
     <header>
-        <h1>Your Cart</h1>
+        <h1>Shopping Cart</h1>
         <nav>
             <ul>
-                <!-- Navigation Links -->
                 <li><a href="index.html">Home</a></li>
                 <li><a href="shop.html">Shop</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
             </ul>
         </nav>
     </header>
 
-    <section>
-        <h2>Your Cart Items</h2>
-        <!-- Cart Items will be dynamically inserted here -->
-        <div class="cart-items">
-            <!-- Example cart item -->
-            <div class="cart-item">
-                <div class="cart-item-details">
-                    <img src="example-product.jpg" alt="Product Image">
-                    <div>
-                        <h3>Product Name</h3>
-                        <p>$20.00</p>
-                    </div>
-                </div>
-                <button class="remove-item">Remove</button>
-            </div>
+    <!-- Cart Section -->
+    <section class="cart">
+        <h2>Your Cart</h2>
+        <div id="cart-items">
+            <!-- Cart items will be displayed here -->
         </div>
-
-        <!-- Cart Total -->
-        <div id="cart-total">
-            Total: $0.00
+        <div id="cart-summary">
+            <p>Total: $<span id="total-price">0.00</span></p>
+            <button id="checkout-btn">Proceed to Checkout</button>
         </div>
-
-        <!-- Checkout Button -->
-        <button id="checkout-button">Checkout</button>
     </section>
 
+    <!-- Footer Section -->
     <footer>
-        <p>&copy; 2024 My Store</p>
+        <p>&copy; 2024 Our E-commerce Store. All rights reserved.</p>
+        <p><a href="terms.html">Terms & Conditions</a> | <a href="privacy.html">Privacy Policy</a></p>
     </footer>
 
-    <script src="cart.js"></script> <!-- Link to external JS file -->
+    <script>
+        // Load cart from local storage
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            const totalPriceElement = document.getElementById('total-price');
+            cartItemsContainer.innerHTML = '';  // Clear the current cart items
+
+            let total = 0;
+
+            // Loop through the cart items and display them
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-details">
+                        <h3>${item.name}</h3>
+                        <p>Price: $${item.price}</p>
+                        <p>Quantity: <span class="quantity">${item.quantity}</span></p>
+                    </div>
+                    <button class="remove-btn" data-id="${item.id}">Remove</button>
+                `;
+
+                // Add event listener for removing an item
+                cartItem.querySelector('.remove-btn').addEventListener('click', () => {
+                    removeItemFromCart(item.id);
+                });
+
+                cartItemsContainer.appendChild(cartItem);
+                total += item.price * item.quantity;  // Calculate total price
+            });
+
+            // Update total price
+            totalPriceElement.textContent = total.toFixed(2);
+        }
+
+        // Remove item from the cart
+        function removeItemFromCart(productId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.id !== productId);  // Filter out the item to remove
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();  // Reload the cart after removing the item
+        }
+
+        // Load cart on page load
+        window.onload = loadCart;
+
+        // Checkout button functionality (example)
+        document.getElementById('checkout-btn').addEventListener('click', () => {
+            alert('Proceeding to checkout...');
+            // Redirect to the checkout page (you can change this to your actual checkout page)
+            window.location.href = 'checkout.html';
+        });
+    </script>
+
 </body>
+
 </html>
