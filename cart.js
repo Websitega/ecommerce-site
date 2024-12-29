@@ -1,58 +1,75 @@
-// Function to update the cart view
-function updateCart() {
-    // Get cart data from localStorage or initialize an empty array if no data
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let cartItemsContainer = document.getElementById('cart-items');
-    let totalPrice = 0;
+// Function to render cart items
+function renderCart() {
+    // Get cart data from localStorage (or empty array if nothing is saved)
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // Clear the current cart view
-    cartItemsContainer.innerHTML = '';
+    // Get the cart container element where items will be displayed
+    const cartContainer = document.querySelector('.cart-items');
+    cartContainer.innerHTML = ''; // Clear any previous items
 
-    // Loop through cart items and render them
-    cart.forEach((item, index) => {
-        totalPrice += item.price * item.quantity;
+    // If the cart is empty, display a message
+    if (cart.length === 0) {
+        cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+        return;
+    }
 
-        let cartItemElement = document.createElement('div');
+    // Loop through the cart items and display them
+    cart.forEach(item => {
+        // Create a div element for each cart item
+        const cartItemElement = document.createElement('div');
         cartItemElement.classList.add('cart-item');
+
+        // Set the innerHTML for the cart item element
         cartItemElement.innerHTML = `
             <div class="cart-item-details">
-                <img src="${item.image}" alt="${item.name}" width="50" />
-                <span>${item.name}</span> - $${item.price} x ${item.quantity}
+                <img src="path-to-image.jpg" alt="${item.name}" class="cart-item-img">
+                <div>
+                    <h4>${item.name}</h4>
+                    <p>Price: $${item.price}</p>
+                    <p>Quantity: ${item.quantity}</p>
+                </div>
             </div>
-            <button class="remove-item" data-index="${index}">Remove</button>
+            <button class="remove-item" data-id="${item.id}">Remove</button>
         `;
-        cartItemsContainer.appendChild(cartItemElement);
+
+        // Append the cart item to the cart container
+        cartContainer.appendChild(cartItemElement);
     });
 
-    // Update total price in the cart
-    document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+    // Update cart total
+    renderCartTotal();
 }
 
-// Function to handle item removal from the cart
-function removeItemFromCart(index) {
+// Function to render the total price of the cart
+function renderCartTotal() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalElement = document.querySelector('#cart-total');
+    let total = cart.reduce((sum, item) => sum + parseFloat(item.price) * item.quantity, 0);
+    totalElement.textContent = `Total: $${total.toFixed(2)}`;
+}
+
+// Function to remove item from cart
+function removeItemFromCart(productId) {
+    // Get the cart from localStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     
-    // Remove item from cart using the index
-    cart.splice(index, 1);
+    // Filter out the item with the matching productId
+    cart = cart.filter(item => item.id !== productId);
     
-    // Update localStorage with the updated cart
+    // Store the updated cart back in localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
-    
-    // Re-render the cart after removal
-    updateCart();
+
+    // Re-render the cart after removing item
+    renderCart();
 }
 
-// Event listener for remove buttons (delegated to the document)
-document.addEventListener('click', function (e) {
-    // Check if the clicked element has the 'remove-item' class
-    if (e.target && e.target.classList.contains('remove-item')) {
-        // Get the index of the item to remove
-        let index = e.target.getAttribute('data-index');
-        
-        // Call the remove function
-        removeItemFromCart(index);
+// Add event listener for remove buttons
+document.querySelector('.cart-items').addEventListener('click', (e) => {
+    if (e.target.classList.contains('remove-item')) {
+        const productId = e.target.dataset.id;
+        removeItemFromCart(productId);
     }
 });
 
-// On page load, update the cart display
-window.addEventListener('load', updateCart);
+// Call the function to render cart items when the page loads
+renderCart();
