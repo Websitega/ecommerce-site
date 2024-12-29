@@ -19,6 +19,8 @@ header {
     color: white;
     padding: 10px 0;
     text-align: center;
+    position: relative;
+    z-index: 100;
 }
 
 header h1 {
@@ -28,10 +30,12 @@ header h1 {
 nav ul {
     list-style: none;
     padding: 0;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
 }
 
 nav ul li {
-    display: inline;
     margin: 0 15px;
 }
 
@@ -39,6 +43,11 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ddd;
 }
 
 /* Cart Link in Header */
@@ -116,6 +125,7 @@ section h2 {
     background-color: #555;
 }
 
+/* Footer */
 footer {
     background-color: #333;
     color: white;
@@ -123,12 +133,25 @@ footer {
     text-align: center;
     margin-top: 20px;
 }
+
+footer p {
+    font-size: 1rem;
+}
+
+/* Cart Item Styles */
 .cart-item {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item:hover {
+    background-color: #f9f9f9;
 }
 
 .cart-item-details {
@@ -146,13 +169,50 @@ footer {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .remove-item:hover {
     background-color: darkred;
 }
 
-/* Additional Styles */
-footer p {
-    font-size: 1rem;
+/* Cart Total Styles */
+#cart-total {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
+
+#checkout-button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 20px auto;
+}
+
+#checkout-button:hover {
+    background-color: #555;
+}
+
+/* Ensure Cart Layout Remains Responsive */
+@media (max-width: 768px) {
+    .product-list {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .product h3, .product p {
+        font-size: 1rem;
+    }
+
+    .cart-item-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
