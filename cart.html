@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <!-- Header with Navigation -->
     <header>
         <div class="logo">
@@ -27,7 +26,6 @@
     <!-- Cart Page Content -->
     <section id="cart-section">
         <h2>Your Cart</h2>
-
         <div id="cart-items"></div>
         <div id="cart-total">
             <p>Total: $<span id="total-price">0.00</span></p>
@@ -41,80 +39,72 @@
 
     <!-- JavaScript for Cart Page -->
     <script>
-        // Function to update the cart count in the header
+        // Update cart count
         function updateCartCount() {
-            let cartCount = localStorage.getItem('cartCount') ? parseInt(localStorage.getItem('cartCount')) : 0;
+            const cartCount = localStorage.getItem('cartCount') ? parseInt(localStorage.getItem('cartCount')) : 0;
             const cartCountElement = document.getElementById('cart-count');
             cartCountElement.textContent = cartCount;
         }
 
-        // Function to display items in the cart
+        // Display cart items
         function displayCartItems() {
             const cartItemsContainer = document.getElementById('cart-items');
             const totalPriceElement = document.getElementById('total-price');
-            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
             let totalPrice = 0;
 
-            // Clear previous cart items
+            // Clear the cart container to avoid duplicates
             cartItemsContainer.innerHTML = '';
 
-            // If there are no items, show a message
             if (cartItems.length === 0) {
                 cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
             } else {
-                // Loop through the cart items and display them
                 cartItems.forEach(item => {
+                    // Create the HTML content for each cart item
                     const itemElement = document.createElement('div');
                     itemElement.classList.add('cart-item');
                     itemElement.innerHTML = `
                         <h4>${item.name}</h4>
                         <p>Price: $${item.price}</p>
                         <p>Quantity: ${item.quantity}</p>
+                        <p>Total: $${(item.price * item.quantity).toFixed(2)}</p>
                         <button class="remove-item" data-id="${item.id}">Remove</button>
                     `;
                     cartItemsContainer.appendChild(itemElement);
-
-                    // Calculate total price
                     totalPrice += item.price * item.quantity;
                 });
 
-                // Update total price
+                // Update the total price on the page
                 totalPriceElement.textContent = totalPrice.toFixed(2);
             }
         }
 
-        // Handle removing an item from the cart
+        // Remove item from cart
         function handleRemoveItem(event) {
             if (event.target.classList.contains('remove-item')) {
                 const productId = event.target.getAttribute('data-id');
                 let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-                // Filter out the removed item
+                // Remove the item with the matching product ID
                 cartItems = cartItems.filter(item => item.id !== productId);
 
-                // Update localStorage
+                // Save the updated cart back to localStorage
                 localStorage.setItem('cartItems', JSON.stringify(cartItems));
-
-                // Update the cart count
                 localStorage.setItem('cartCount', cartItems.length);
 
-                // Update cart display
                 updateCartCount();
-                displayCartItems();
+                displayCartItems();  // Re-display the cart after removal
             }
         }
 
-        // Initialize the page
+        // Initialize cart page
         document.addEventListener('DOMContentLoaded', function () {
-            // Update cart count and items
             updateCartCount();
             displayCartItems();
 
-            // Add event listener to remove items
             const cartItemsContainer = document.getElementById('cart-items');
             cartItemsContainer.addEventListener('click', handleRemoveItem);
         });
     </script>
-
 </body>
 </html>
