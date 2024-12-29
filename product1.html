@@ -1,35 +1,80 @@
-<!-- Product 1 -->
-<div class="product" data-id="1">
-    <img src="https://via.placeholder.com/250" alt="Product 1">
-    <h3>Product 1</h3>
-    <p class="price">$19.99</p>
-    <button class="add-to-cart-btn">Add to Cart</button>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<script>
-    // Product 1 details
-    const product1 = {
-        id: 1,
-        name: 'Product 1',
-        price: 19.99,
-        image: 'https://via.placeholder.com/250',  // Image URL for Product 1
-    };
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product 1 - Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-    // Add to Cart function
-    function addToCart() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const existingProductIndex = cart.findIndex(item => item.id === product1.id);
+<body>
 
-        if (existingProductIndex !== -1) {
-            cart[existingProductIndex].quantity += 1;
-        } else {
-            product1.quantity = 1;
-            cart.push(product1);
+    <!-- Header Section -->
+    <header>
+        <h1>Product 1 - Details</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Product Details Section -->
+    <section class="product-details">
+        <div class="product-info">
+            <img src="https://via.placeholder.com/250" alt="Product 1 Image">
+            <div class="product-description">
+                <h3>Product 1</h3>
+                <p>This is a detailed description of Product 1. It is high quality and worth every penny. Ideal for those who need a reliable and stylish product.</p>
+                <p class="price">$19.99</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Our E-commerce Store. All rights reserved.</p>
+        <p><a href="terms.html">Terms & Conditions</a> | <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+
+    <script>
+        // Product 1 details
+        const product1 = {
+            id: 1,
+            name: 'Product 1',
+            price: 19.99,
+            image: 'https://via.placeholder.com/250',  // Image URL for Product 1
+        };
+
+        // Function to add product to the cart
+        function addToCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || []; // Retrieve cart or initialize empty cart
+            const existingProductIndex = cart.findIndex(item => item.id === product1.id); // Check if product is already in the cart
+
+            if (existingProductIndex !== -1) {
+                // If product exists, update quantity
+                cart[existingProductIndex].quantity += 1;
+            } else {
+                // If product does not exist, add it to the cart with quantity 1
+                product1.quantity = 1;
+                cart.push(product1);
+            }
+
+            // Save updated cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product1.name} has been added to your cart.`); // Alert user that product has been added
         }
 
-        localStorage.setItem('cart', JSON.stringify(cart));
-        alert(`${product1.name} has been added to your cart.`);
-    }
+        // Event listener for "Add to Cart" button
+        document.querySelector('.add-to-cart-btn').addEventListener('click', addToCart);
+    </script>
 
-    document.querySelector('.add-to-cart-btn').addEventListener('click', addToCart);
-</script>
+</body>
+
+</html>
