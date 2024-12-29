@@ -4,34 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product 3 - E-commerce Store</title>
+    <title>Product 3 - Details</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
     <header>
-        <h1>Our E-commerce Store</h1>
+        <h1>Product 3 - Details</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="cart.html" class="cart">Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="cart.html">Cart</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="product-detail">
-        <div class="product-image">
-            <img src="https://via.placeholder.com/500" alt="Product 3">
-        </div>
+    <section class="product-details">
         <div class="product-info">
-            <h2>Product 3</h2>
-            <p class="price">$39.99</p>
-            <p class="description">This is a detailed description of Product 3. It's a high-quality product designed to meet your needs!</p>
-            <button>Add to Cart</button>
+            <img src="https://via.placeholder.com/250?text=Product+3" alt="Product 3 Image">
+            <div class="product-description">
+                <h3>Product 3</h3>
+                <p>This is a detailed description of Product 3. Known for its versatility and durability, it's perfect for everyday use.</p>
+                <p class="price">$39.99</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
         </div>
     </section>
 
@@ -40,7 +40,32 @@
         <p><a href="terms.html">Terms & Conditions</a> | <a href="privacy.html">Privacy Policy</a></p>
     </footer>
 
-    <script src="main.js"></script>
+    <script>
+        const product3 = {
+            id: 3,
+            name: 'Product 3',
+            price: 39.99,
+            image: 'https://via.placeholder.com/250?text=Product+3',
+        };
+
+        function addToCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingProductIndex = cart.findIndex(item => item.id === product3.id);
+
+            if (existingProductIndex !== -1) {
+                cart[existingProductIndex].quantity += 1;
+            } else {
+                product3.quantity = 1;
+                cart.push(product3);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product3.name} has been added to your cart.`);
+        }
+
+        document.querySelector('.add-to-cart-btn').addEventListener('click', addToCart);
+    </script>
+
 </body>
 
 </html>
