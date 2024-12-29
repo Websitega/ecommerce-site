@@ -295,6 +295,42 @@
             });
         });
     </script>
+<script>
+    document.querySelectorAll('.product button').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const product = {
+                id: e.target.closest('.product').dataset.id,  // or use any unique identifier
+                name: e.target.closest('.product').querySelector('h3').innerText,
+                price: e.target.closest('.product').querySelector('.price').innerText,
+                quantity: 1, // Default quantity
+            };
+
+            // Get existing cart from localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Check if product already exists in cart
+            const existingProductIndex = cart.findIndex(item => item.id === product.id);
+            if (existingProductIndex >= 0) {
+                // If product exists, update the quantity
+                cart[existingProductIndex].quantity += 1;
+            } else {
+                // If not, add new product to cart
+                cart.push(product);
+            }
+
+            // Store updated cart in localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Update cart icon (number of items)
+            updateCartCount();
+        });
+    });
+
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        document.querySelector('.cart span').textContent = cart.reduce((total, item) => total + item.quantity, 0);
+    }
+</script>
 
 </body>
 
