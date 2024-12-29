@@ -6,6 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop - E-commerce Store</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS for cart box */
+        #cart-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 200px;
+        }
+        #cart-box h4 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+        #cart-items {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+        #cart-box .btn {
+            display: block;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        #cart-box .btn:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,231 +73,203 @@
         <h2>Featured Products</h2>
 
         <div class="product-list">
-            <!-- Product 1 -->
-            <div class="product">
+            <!-- Product 1 to Product 25 -->
+            <!-- Each product can be added similarly as shown below -->
+            <div class="product" data-id="1">
                 <img src="https://via.placeholder.com/250" alt="Product 1">
                 <h3>Product 1</h3>
                 <p>$19.99</p>
-                <a href="product-details.html?id=1" class="view-details">View Details</a>
                 <button class="add-to-cart" data-product-id="1" data-product-name="Product 1" data-product-price="19.99">Add to Cart</button>
             </div>
 
-            <!-- Product 2 -->
-            <div class="product">
+            <div class="product" data-id="2">
                 <img src="https://via.placeholder.com/250" alt="Product 2">
                 <h3>Product 2</h3>
                 <p>$29.99</p>
-                <a href="product-details.html?id=2" class="view-details">View Details</a>
                 <button class="add-to-cart" data-product-id="2" data-product-name="Product 2" data-product-price="29.99">Add to Cart</button>
             </div>
 
-            <!-- Product 3 -->
-            <div class="product">
-                <img src="https://via.placeholder.com/250" alt="Product 3">
-                <h3>Product 3</h3>
-                <p>$39.99</p>
-                <a href="product-details.html?id=3" class="view-details">View Details</a>
-                <button class="add-to-cart" data-product-id="3" data-product-name="Product 3" data-product-price="39.99">Add to Cart</button>
-            </div>
+            <div class="product" data-id="1">
+    <img src="https://via.placeholder.com/250" alt="Product 1">
+    <h3>Product 1</h3>
+    <p>$19.99</p>
+    <button class="add-to-cart" data-product-id="1" data-product-name="Product 1" data-product-price="19.99">Add to Cart</button>
+</div>
 
-            <!-- Product 4 -->
-            <div class="product">
-                <img src="https://via.placeholder.com/250" alt="Product 4">
-                <h3>Product 4</h3>
-                <p>$49.99</p>
-                <a href="product-details.html?id=4" class="view-details">View Details</a>
-                <button class="add-to-cart" data-product-id="4" data-product-name="Product 4" data-product-price="49.99">Add to Cart</button>
-            </div>
+<div class="product" data-id="2">
+    <img src="https://via.placeholder.com/250" alt="Product 2">
+    <h3>Product 2</h3>
+    <p>$29.99</p>
+    <button class="add-to-cart" data-product-id="2" data-product-name="Product 2" data-product-price="29.99">Add to Cart</button>
+</div>
 
-            <!-- Product 5 -->
-            <div class="product">
-                <img src="https://via.placeholder.com/250" alt="Product 5">
-                <h3>Product 5</h3>
-                <p>$59.99</p>
-                <a href="product-details.html?id=5" class="view-details">View Details</a>
-                <button class="add-to-cart" data-product-id="5" data-product-name="Product 5" data-product-price="59.99">Add to Cart</button>
-            </div>
+<div class="product" data-id="3">
+    <img src="https://via.placeholder.com/250" alt="Product 3">
+    <h3>Product 3</h3>
+    <p>$39.99</p>
+    <button class="add-to-cart" data-product-id="3" data-product-name="Product 3" data-product-price="39.99">Add to Cart</button>
+</div>
 
-         <!-- Product 6 -->
-<div class="product">
+<div class="product" data-id="4">
+    <img src="https://via.placeholder.com/250" alt="Product 4">
+    <h3>Product 4</h3>
+    <p>$49.99</p>
+    <button class="add-to-cart" data-product-id="4" data-product-name="Product 4" data-product-price="49.99">Add to Cart</button>
+</div>
+
+<div class="product" data-id="5">
+    <img src="https://via.placeholder.com/250" alt="Product 5">
+    <h3>Product 5</h3>
+    <p>$59.99</p>
+    <button class="add-to-cart" data-product-id="5" data-product-name="Product 5" data-product-price="59.99">Add to Cart</button>
+</div>
+
+<div class="product" data-id="6">
     <img src="https://via.placeholder.com/250" alt="Product 6">
     <h3>Product 6</h3>
     <p>$69.99</p>
-    <a href="product-details.html?id=6" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="6" data-product-name="Product 6" data-product-price="69.99">Add to Cart</button>
 </div>
 
-<!-- Product 7 -->
-<div class="product">
+<div class="product" data-id="7">
     <img src="https://via.placeholder.com/250" alt="Product 7">
     <h3>Product 7</h3>
     <p>$79.99</p>
-    <a href="product-details.html?id=7" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="7" data-product-name="Product 7" data-product-price="79.99">Add to Cart</button>
 </div>
 
-<!-- Product 8 -->
-<div class="product">
+<div class="product" data-id="8">
     <img src="https://via.placeholder.com/250" alt="Product 8">
     <h3>Product 8</h3>
     <p>$89.99</p>
-    <a href="product-details.html?id=8" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="8" data-product-name="Product 8" data-product-price="89.99">Add to Cart</button>
 </div>
 
-<!-- Product 9 -->
-<div class="product">
+<div class="product" data-id="9">
     <img src="https://via.placeholder.com/250" alt="Product 9">
     <h3>Product 9</h3>
     <p>$99.99</p>
-    <a href="product-details.html?id=9" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="9" data-product-name="Product 9" data-product-price="99.99">Add to Cart</button>
 </div>
 
-<!-- Product 10 -->
-<div class="product">
+<div class="product" data-id="10">
     <img src="https://via.placeholder.com/250" alt="Product 10">
     <h3>Product 10</h3>
     <p>$109.99</p>
-    <a href="product-details.html?id=10" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="10" data-product-name="Product 10" data-product-price="109.99">Add to Cart</button>
 </div>
 
-<!-- Product 11 -->
-<div class="product">
+<div class="product" data-id="11">
     <img src="https://via.placeholder.com/250" alt="Product 11">
     <h3>Product 11</h3>
     <p>$119.99</p>
-    <a href="product-details.html?id=11" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="11" data-product-name="Product 11" data-product-price="119.99">Add to Cart</button>
 </div>
 
-<!-- Product 12 -->
-<div class="product">
+<div class="product" data-id="12">
     <img src="https://via.placeholder.com/250" alt="Product 12">
     <h3>Product 12</h3>
     <p>$129.99</p>
-    <a href="product-details.html?id=12" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="12" data-product-name="Product 12" data-product-price="129.99">Add to Cart</button>
 </div>
 
-<!-- Product 13 -->
-<div class="product">
+<div class="product" data-id="13">
     <img src="https://via.placeholder.com/250" alt="Product 13">
     <h3>Product 13</h3>
     <p>$139.99</p>
-    <a href="product-details.html?id=13" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="13" data-product-name="Product 13" data-product-price="139.99">Add to Cart</button>
 </div>
 
-<!-- Product 14 -->
-<div class="product">
+<div class="product" data-id="14">
     <img src="https://via.placeholder.com/250" alt="Product 14">
     <h3>Product 14</h3>
     <p>$149.99</p>
-    <a href="product-details.html?id=14" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="14" data-product-name="Product 14" data-product-price="149.99">Add to Cart</button>
 </div>
 
-<!-- Product 15 -->
-<div class="product">
+<div class="product" data-id="15">
     <img src="https://via.placeholder.com/250" alt="Product 15">
     <h3>Product 15</h3>
     <p>$159.99</p>
-    <a href="product-details.html?id=15" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="15" data-product-name="Product 15" data-product-price="159.99">Add to Cart</button>
 </div>
 
-            <!-- Product 16 -->
-<div class="product">
+<div class="product" data-id="16">
     <img src="https://via.placeholder.com/250" alt="Product 16">
     <h3>Product 16</h3>
     <p>$169.99</p>
-    <a href="product-details.html?id=16" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="16" data-product-name="Product 16" data-product-price="169.99">Add to Cart</button>
 </div>
 
-<!-- Product 17 -->
-<div class="product">
+<div class="product" data-id="17">
     <img src="https://via.placeholder.com/250" alt="Product 17">
     <h3>Product 17</h3>
     <p>$179.99</p>
-    <a href="product-details.html?id=17" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="17" data-product-name="Product 17" data-product-price="179.99">Add to Cart</button>
 </div>
 
-<!-- Product 18 -->
-<div class="product">
+<div class="product" data-id="18">
     <img src="https://via.placeholder.com/250" alt="Product 18">
     <h3>Product 18</h3>
     <p>$189.99</p>
-    <a href="product-details.html?id=18" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="18" data-product-name="Product 18" data-product-price="189.99">Add to Cart</button>
 </div>
 
-<!-- Product 19 -->
-<div class="product">
+<div class="product" data-id="19">
     <img src="https://via.placeholder.com/250" alt="Product 19">
     <h3>Product 19</h3>
     <p>$199.99</p>
-    <a href="product-details.html?id=19" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="19" data-product-name="Product 19" data-product-price="199.99">Add to Cart</button>
 </div>
 
-<!-- Product 20 -->
-<div class="product">
+<div class="product" data-id="20">
     <img src="https://via.placeholder.com/250" alt="Product 20">
     <h3>Product 20</h3>
     <p>$209.99</p>
-    <a href="product-details.html?id=20" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="20" data-product-name="Product 20" data-product-price="209.99">Add to Cart</button>
 </div>
 
-<!-- Product 21 -->
-<div class="product">
+<div class="product" data-id="21">
     <img src="https://via.placeholder.com/250" alt="Product 21">
     <h3>Product 21</h3>
     <p>$219.99</p>
-    <a href="product-details.html?id=21" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="21" data-product-name="Product 21" data-product-price="219.99">Add to Cart</button>
 </div>
 
-<!-- Product 22 -->
-<div class="product">
+<div class="product" data-id="22">
     <img src="https://via.placeholder.com/250" alt="Product 22">
     <h3>Product 22</h3>
     <p>$229.99</p>
-    <a href="product-details.html?id=22" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="22" data-product-name="Product 22" data-product-price="229.99">Add to Cart</button>
 </div>
 
-<!-- Product 23 -->
-<div class="product">
+<div class="product" data-id="23">
     <img src="https://via.placeholder.com/250" alt="Product 23">
     <h3>Product 23</h3>
     <p>$239.99</p>
-    <a href="product-details.html?id=23" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="23" data-product-name="Product 23" data-product-price="239.99">Add to Cart</button>
 </div>
 
-<!-- Product 24 -->
-<div class="product">
+<div class="product" data-id="24">
     <img src="https://via.placeholder.com/250" alt="Product 24">
     <h3>Product 24</h3>
     <p>$249.99</p>
-    <a href="product-details.html?id=24" class="view-details">View Details</a>
     <button class="add-to-cart" data-product-id="24" data-product-name="Product 24" data-product-price="249.99">Add to Cart</button>
 </div>
 
-<!-- Product 25 -->
-<div class="product">
+<div class="product" data-id="25">
     <img src="https://via.placeholder.com/250" alt="Product 25">
     <h3>Product 25</h3>
     <p>$259.99</p>
-    <a href="product-details.html?id=25" class="view-details">View Details</a>
-    <button class="add-to-cart" data-product-id="25" data-product-name="Product 25" data-product
+    <button class="add-to-cart" data-product-id="25" data-product-name="Product 25" data-product-price="259.99">Add to Cart</button>
+</div>
 
-
+            <div class="product" data-id="25">
+                <img src="https://via.placeholder.com/250" alt="Product 25">
+                <h3>Product 25</h3>
+                <p>$259.99</p>
+                <button class="add-to-cart" data-product-id="25" data-product-name="Product 25" data-product-price="259.99">Add to Cart</button>
+            </div>
         </div>
     </section>
 
@@ -271,66 +278,61 @@
         <p>&copy; 2024 Our E-commerce Store. All rights reserved.</p>
     </footer>
 
+    <!-- Cart Box -->
+    <div id="cart-box">
+        <h4>Your Cart</h4>
+        <div id="cart-items">
+            <!-- Cart items will be displayed here dynamically -->
+        </div>
+        <a href="cart.html" class="btn">Go to Cart</a>
+    </div>
+
     <!-- JavaScript for Cart Functionality -->
     <script>
-        // Initialize the cart count from localStorage or default to 0
-        let cartCount = localStorage.getItem('cartCount') ? parseInt(localStorage.getItem('cartCount')) : 0;
-
-        // Update the cart count in the header
+        // Initialize cart
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         const cartCountElement = document.getElementById('cart-count');
-        cartCountElement.textContent = cartCount;
+        const cartItemsElement = document.getElementById('cart-items');
 
-        // Add event listeners to all "Add to Cart" buttons
-        const addToCartButtons = document.querySelectorAll('.add-to-cart');
-        addToCartButtons.forEach(button => {
-            button.addEventListener('click', function () {
-                // Increase the cart count
-                cartCount++;
+        // Update cart count and display
+        function updateCart() {
+            cartCountElement.textContent = cart.length;
+            cartItemsElement.innerHTML = cart.map(item => `
+                <div>
+                    <strong>${item.name}</strong> x ${item.quantity} - $${(item.price * item.quantity).toFixed(2)}
+                </div>
+            `).join('');
+        }
 
-                // Save the new cart count to localStorage
-                localStorage.setItem('cartCount', cartCount);
+        // Add product to cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const product = {
+                    id: e.target.dataset.productId,
+                    name: e.target.dataset.productName,
+                    price: parseFloat(e.target.dataset.productPrice),
+                    quantity: 1
+                };
 
-                // Update the cart count display in the header
-                cartCountElement.textContent = cartCount;
+                // Check if product already in cart
+                const existingProduct = cart.find(item => item.id === product.id);
+                if (existingProduct) {
+                    existingProduct.quantity += 1;
+                } else {
+                    cart.push(product);
+                }
+
+                // Save cart to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Update the cart box and cart count
+                updateCart();
             });
         });
+
+        // Initialize cart on page load
+        updateCart();
     </script>
-<script>
-    document.querySelectorAll('.product button').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const product = {
-                id: e.target.closest('.product').dataset.id,  // or use any unique identifier
-                name: e.target.closest('.product').querySelector('h3').innerText,
-                price: e.target.closest('.product').querySelector('.price').innerText,
-                quantity: 1, // Default quantity
-            };
-
-            // Get existing cart from localStorage
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-            // Check if product already exists in cart
-            const existingProductIndex = cart.findIndex(item => item.id === product.id);
-            if (existingProductIndex >= 0) {
-                // If product exists, update the quantity
-                cart[existingProductIndex].quantity += 1;
-            } else {
-                // If not, add new product to cart
-                cart.push(product);
-            }
-
-            // Store updated cart in localStorage
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            // Update cart icon (number of items)
-            updateCartCount();
-        });
-    });
-
-    function updateCartCount() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        document.querySelector('.cart span').textContent = cart.reduce((total, item) => total + item.quantity, 0);
-    }
-</script>
 
 </body>
 
