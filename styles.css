@@ -8,8 +8,8 @@
 /* Body and Global Styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #2a2a72, #009ffd);
-    color: #fff;
+    background: #f8f8f8; /* Light background similar to Alibaba's */
+    color: #333; /* Dark text color for better readability */
     line-height: 1.6;
     height: 100vh;
     margin: 0;
@@ -17,7 +17,7 @@ body {
 
 /* Header Styles */
 header {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #232323; /* Dark header background */
     color: white;
     padding: 15px 0;
     text-align: center;
@@ -25,14 +25,15 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 600;
+    margin-bottom: 10px;
 }
 
 /* Navigation Bar */
@@ -42,29 +43,32 @@ nav ul {
     margin-top: 10px;
     display: flex;
     justify-content: center;
+    gap: 20px;
 }
 
 nav ul li {
-    margin: 0 20px;
+    margin: 0;
 }
 
 nav ul li a {
     color: #fff;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
     letter-spacing: 1px;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #00eaff;
+    color: #ff6600; /* Alibaba orange color */
     transform: translateY(-5px);
 }
 
 /* Cart Link in Header */
 .cart {
-    position: relative;
+    position: absolute;
+    top: 15px;
+    right: 30px;
     text-decoration: none;
     color: #fff;
     font-weight: bold;
@@ -75,7 +79,7 @@ nav ul li a:hover {
     position: absolute;
     top: -5px;
     right: -10px;
-    background-color: #ff2a68;
+    background-color: #ff6600;
     color: white;
     border-radius: 50%;
     padding: 5px;
@@ -87,7 +91,7 @@ section {
     padding: 100px 20px 20px; /* Account for fixed header */
     max-width: 1200px;
     margin: 20px auto;
-    color: white;
+    color: black; /* Change to black text for better contrast */
 }
 
 section h2 {
@@ -104,23 +108,23 @@ section h2 {
 }
 
 .product {
-    background-color: #1e1e1e;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: #fff; /* White background for products */
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 20px;
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .product:hover {
-    background: linear-gradient(135deg, #ff2a68, #00eaff);
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #ff6600, #f2a700); /* Alibaba-inspired orange gradient */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
 }
 
 .product h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin: 10px 0;
 }
 
@@ -130,8 +134,8 @@ section h2 {
 }
 
 .product button {
-    padding: 10px 20px;
-    background-color: #00eaff;
+    padding: 12px 25px;
+    background-color: #ff6600;
     color: white;
     border: none;
     border-radius: 5px;
@@ -145,12 +149,12 @@ section h2 {
 }
 
 .product button:hover {
-    background-color: #ff2a68;
+    background-color: #f2a700;
 }
 
 /* Footer */
 footer {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #232323;
     color: white;
     padding: 20px;
     text-align: center;
@@ -168,13 +172,13 @@ footer p {
     margin-bottom: 20px;
     padding: 15px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: #1e1e1e;
+    background-color: #fff;
     border-radius: 10px;
     transition: background-color 0.3s ease;
 }
 
 .cart-item:hover {
-    background-color: #2e2e2e;
+    background-color: #f2f2f2;
 }
 
 .cart-item-details {
@@ -185,10 +189,12 @@ footer p {
 .cart-item-details img {
     margin-right: 15px;
     border-radius: 8px;
+    width: 60px;
+    height: 60px;
 }
 
 .remove-item {
-    background-color: #ff2a68;
+    background-color: #ff6600;
     color: white;
     border: none;
     padding: 8px 15px;
@@ -199,7 +205,7 @@ footer p {
 }
 
 .remove-item:hover {
-    background-color: #00eaff;
+    background-color: #f2a700;
 }
 
 /* Cart Total Styles */
@@ -212,7 +218,7 @@ footer p {
 }
 
 #checkout-button {
-    background-color: #00eaff;
+    background-color: #ff6600;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -225,7 +231,7 @@ footer p {
 }
 
 #checkout-button:hover {
-    background-color: #ff2a68;
+    background-color: #f2a700;
 }
 
 /* Responsive Styles */
@@ -244,7 +250,7 @@ footer p {
     }
 
     header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .cart span {
