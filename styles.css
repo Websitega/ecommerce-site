@@ -107,12 +107,12 @@ section h2 {
     color: #fff;
 }
 
-/* Product Grid for Index Page - Show 6 products in one row */
+/* Product Grid */
 .product-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px;
+    gap: 30px;
     padding: 40px 0;
 }
 
@@ -126,7 +126,7 @@ section h2 {
     position: relative;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     overflow: hidden;
-    width: calc(16.66% - 20px); /* Adjusted for 6 items per row */
+    width: calc(20% - 24px); /* Make each product take 20% of the available space */
 }
 
 .product:hover {
@@ -161,48 +161,6 @@ section h2 {
 }
 
 .add-to-cart:hover {
-    background-color: #218838;
-    transform: scale(1.05);
-}
-
-/* Product Details Page */
-.product-details {
-    display: block;
-    margin: 50px auto;
-    text-align: center;
-    padding: 20px;
-    background-color: #222;
-    border-radius: 15px;
-    width: 50%;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.product-details h2 {
-    font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-.product-details p {
-    font-size: 1.6rem;
-    color: #e0e0e0;
-    margin-bottom: 30px;
-}
-
-.product-details .add-to-cart {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 20px 30px; /* Slightly bigger padding */
-    font-size: 1.4rem; /* Slightly larger font size */
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    width: 100%;
-    margin-top: 20px;
-}
-
-.product-details .add-to-cart:hover {
     background-color: #218838;
     transform: scale(1.05);
 }
@@ -243,18 +201,12 @@ section h2 {
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .product {
-        width: calc(33.33% - 20px); /* For tablets (3 products per row) */
+        width: calc(50% - 24px); /* For tablets */
     }
 }
 
 @media (max-width: 480px) {
     .product {
-        width: calc(50% - 20px); /* For mobile (2 products per row) */
-    }
-}
-
-@media (max-width: 380px) {
-    .product {
-        width: 100%; /* For very small screens (1 product per row) */
+        width: 100%; /* For mobile devices */
     }
 }
