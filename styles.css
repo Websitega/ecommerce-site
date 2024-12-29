@@ -109,8 +109,9 @@ section h2 {
 
 /* Product Grid */
 .product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 30px;
     padding: 40px 0;
 }
@@ -125,6 +126,7 @@ section h2 {
     position: relative;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
     overflow: hidden;
+    width: calc(20% - 24px); /* Make each product take 20% of the available space */
 }
 
 .product:hover {
