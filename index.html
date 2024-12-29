@@ -83,7 +83,7 @@
                 <button class="add-to-cart" data-product-id="5" data-product-name="Product 5" data-product-price="59.99">Add to Cart</button>
             </div>
 
-            <!-- Product 6 -->
+                        <!-- Product 6 -->
             <div class="product">
                 <img src="https://via.placeholder.com/250" alt="Product 6">
                 <h3>Product 6</h3>
@@ -262,6 +262,7 @@
                 <a href="product25.html" class="view-details">View Details</a>
                 <button class="add-to-cart" data-product-id="25" data-product-name="Product 25" data-product-price="259.99">Add to Cart</button>
             </div>
+
         </div>
     </section>
 
@@ -269,6 +270,31 @@
     <footer>
         <p>&copy; 2024 Our E-commerce Store. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript for Cart Functionality -->
+    <script>
+        // Initialize the cart count from localStorage or default to 0
+        let cartCount = localStorage.getItem('cartCount') ? parseInt(localStorage.getItem('cartCount')) : 0;
+
+        // Update the cart count in the header
+        const cartCountElement = document.getElementById('cart-count');
+        cartCountElement.textContent = cartCount;
+
+        // Add event listeners to all "Add to Cart" buttons
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Increase the cart count
+                cartCount++;
+
+                // Save the new cart count to localStorage
+                localStorage.setItem('cartCount', cartCount);
+
+                // Update the cart count display in the header
+                cartCountElement.textContent = cartCount;
+            });
+        });
+    </script>
 
 </body>
 
